@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
 app.use(express.json());
@@ -11,14 +12,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Step 2: Configure Nodemailer
 let transporter = nodemailer.createTransport({
-    host: 'smtp.hostinger.com', // replace with your SMTP host
-    port: 587, // replace with your SMTP port
-    secure: false, // true for 465, false for other ports
-    auth: {
-      user: 'agata@lingolandias.net', // your email
-      pass: 'Krowamucikama100294!' // your password
-    }
-  });
+  host: process.env.SMTP_HOST,
+  port: process.env.SMTP_PORT,
+  secure: false,
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS
+  }
+});
 
 app.post('/contact', (req, res) => {
   console.log(req.body);
