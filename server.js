@@ -22,13 +22,13 @@ let transporter = nodemailer.createTransport({
 });
 
 app.post('/contact', (req, res) => {
-  console.log(req.body);
+  
 
-  // Send an email with the form data
+
   let mailOptions = {
-    from: req.body.email, // sender address
-    to: 'agata@lingolandias.net', // list of receivers
-    subject: 'Lingolandias Form Submission', // Subject line
+    from: 'agata@lingolandias.net', 
+    to: 'agata@lingolandias.net', 
+    subject: 'Lingolandias Form Submission',
     text: `Name: ${req.body.name}\nNumber: ${req.body.number}\nEmail: ${req.body.email}\nMessage: ${req.body.message}` // plain text body
   };
 
